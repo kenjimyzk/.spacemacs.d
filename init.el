@@ -13,11 +13,11 @@ values."
    dotspacemacs-distribution 'spacemacs
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
-   ;sudo apt-get install fonts-ricty-diminished; and `nil'. `unused' will lazy insudo apt-get install fonts-ricty-diminishedstall only unused layers (i.e. layers
+   ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
    ;; lazy install any layer that support lazy installation even the layers
    ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
-   ;; installation feature and you have to explicitly list a layer in the
+   ;; installation f '(package-selected-packages
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
    dotspacemacs-enable-lazy-installation 'unused
@@ -36,31 +36,43 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     ;; auto-completion
      ;; better-defaults
      bibtex
      emacs-lisp
-     ess
+     ess 
      git
      helm
      html
+     ;; ivy
      (japanese :variables
-                helm-migemo-mode 1)
+               migemo-dictionary  "c:/apps/cmigemo-default-win64/dict/utf-8/migemo-dict"
+               helm-migemo-mode 1)
      latex
      markdown
      org
      (shell :variables
-             shell-default-height 30
-             shell-default-position 'bottom)
-     spell-checking
+            shell-default-height 30
+            shell-default-position 'bottom)
+     ;; spell-checking
      ;; syntax-checking
-     ;; version-control
+     version-control
      )
-   ;; List of additional packages that will be installed without being
+   ;; If the value is nil then no banner is displayed. (default 'official)
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(avy-zap)
+   dotspacemacs-additional-packages '(
+                                      avy-migemo
+                                      avy-zap
+                                      org-ref
+                                      org2blog
+                                      cdlatex
+;;                                      swoop
+                                      transpose-mark
+                                      polymode
+;;                                      pdf-tools
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -107,7 +119,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'hybrid
+   dotspacemacs-editing-style 'emacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -115,7 +127,7 @@ values."
    ;; banner, `random' chooses a random text banner in `core/banners'
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
-   ;; If the value is nil then no banner is displayed. (default 'official)
+   ;; List of additional packages that will be installed without being
    dotspacemacs-startup-banner 'official
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
@@ -138,7 +150,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Ricty Diminished"
+   dotspacemacs-default-font '("Ricty Diminished Discord for Powerline"
                                :size 21
                                :weight normal
                                :width normal
@@ -152,13 +164,13 @@ values."
    dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
-   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-emacs-leader-key "M-SPC"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m")
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   ;; (default "M-m")
+   dotspacemacs-major-mode-emacs-leader-key "M-m"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -220,16 +232,22 @@ values."
    ;; right; if there is insufficient space it displays it at the bottom.
    ;; (default 'bottom)
    dotspacemacs-which-key-position 'bottom
+   ;; Control where `switch-to-buffer' displays the buffer. If nil,
+   ;; `switch-to-buffer' displays the buffer in the current window even if
+   ;; another same-purpose window is available. If non nil, `switch-to-buffer'
+   ;; displays the buffer in a same-purpose window even if the buffer can be
+   ;; displayed in the current window. (default nil)
+   dotspacemacs-switch-to-buffer-prefers-purpose nil
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
    dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
-   dotspacemacs-fullscreen-use-non-native t
+   dotspacemacs-fullscreen-use-non-native nil
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
@@ -252,18 +270,8 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
-   ;; Control line numbers activation.
-   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
-   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
-   ;; This variable can also be set to a property list for finer control:
-   ;; '(:relative nil
-   ;;   :disabled-for-modes dired-mode
-   ;;                       doc-view-mode
-   ;;                       markdown-mode
-   ;;                       org-mode
-   ;;                       pdf-view-mode
-   ;;                       text-mode
-   ;;   :size-limit-kb 1000)
+   ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
+   ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
    dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
@@ -315,21 +323,28 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (set-fontset-font
-   nil 'japanese-jisx0208
-   (font-spec :family "Ricty Diminished"))
+;;(setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo") 
+  ;;http://gntm-mdk.hatenadiary.com/entry/2016/11/03/152010
+  (setq w32-get-true-file-attributes nil)
+
   (load-file "~/.spacemacs.d/00avy.el")
   (load-file "~/.spacemacs.d/00transpose-mark.el")
   (load-file "~/.spacemacs.d/00org.el")
 ;;  (load-file "~/.spacemacs.d/00swoop.el")
   (load-file "~/.spacemacs.d/00ddskk.el")
   (load-file "~/.spacemacs.d/00auctex.el")
-;;  (load-file "~/.spacemacs.d/00cdlatex.el")
+  (load-file "~/.spacemacs.d/00cdlatex.el")
+  (load-file "~/.spacemacs.d/00poly.el")
   (load-file "~/.spacemacs.d/00keybinding.el")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -337,7 +352,22 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-statistics company-auctex company auto-yasnippet yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode auctex-latexmk auctex org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core avy-zap xterm-color smeargle shell-pop orgit multi-term mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flyspell-correct-helm flyspell-correct evil-magit magit magit-popup git-commit ghub let-alist with-editor ess-smart-equals ess-R-data-view ctable ess julia-mode eshell-z eshell-prompt-extras esh-help auto-dictionary pangu-spacing japanese-holidays evil-tutor-ja ddskk cdb ccc avy-migemo migemo org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed ace-link ace-jump-helm-line helm helm-core popup which-key undo-tree org-plus-contrib hydra evil-unimpaired f s dash async aggressive-indent adaptive-wrap ace-window avy))))
+    (winum which-key web-mode use-package toc-org restart-emacs persp-mode pdf-tools orgit org-ref magit-gitflow ivy-hydra hungry-delete highlight-indentation helm-make evil-mc dumb-jump diminish diff-hl avy-migemo ace-window counsel swiper smartparens magit magit-popup evil with-editor f helm helm-core ivy avy alert log4e projectile s xterm-color ws-butler wgrep volatile-highlights vi-tilde-fringe uuidgen undo-tree transpose-mark tagedit tablist swoop spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode request rainbow-delimiters pug-mode popwin pkg-info paradox pangu-spacing org2blog org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode migemo markdown-toc macrostep lorem-ipsum linum-relative link-hint less-css-mode key-chord ivy-purpose info+ indent-guide htmlize hl-todo highlight-parentheses highlight-numbers hide-comnt help-fns+ helm-bibtex goto-chg google-translate golden-ratio gnuplot gntp gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md flyspell-correct-ivy flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor-ja evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav define-word ddskk counsel-projectile column-enforce-mode clean-aindent-mode cdlatex bind-key avy-zap auto-highlight-symbol auto-dictionary auto-compile auctex aggressive-indent adaptive-wrap ace-link))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (polymode helm-gitignore helm-css-scss ess-smart-equals ess-R-data-view ctable ess julia-mode xterm-color wgrep web-mode transpose-mark tagedit smex smeargle slim-mode shell-pop scss-mode sass-mode pug-mode orgit org2blog metaweblog xml-rpc org-ref pdf-tools key-chord tablist org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode ivy-hydra htmlize helm-bibtex parsebib haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-ivy flyspell-correct evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl counsel-projectile counsel swiper ivy cdlatex biblio biblio-core avy-zap auto-dictionary auctex-latexmk auctex ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox pangu-spacing org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint japanese-holidays indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor-ja evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word ddskk column-enforce-mode clean-aindent-mode avy-migemo auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
