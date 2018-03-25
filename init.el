@@ -40,7 +40,7 @@ values."
      ;; better-defaults
      bibtex
      emacs-lisp
-     ess 
+     ess
      git
      helm
      html
@@ -54,7 +54,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; spell-checking
+     spell-checking
      ;; syntax-checking
      version-control
      )
@@ -326,7 +326,8 @@ you should place your code here."
 ;;(setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo") 
   ;;http://gntm-mdk.hatenadiary.com/entry/2016/11/03/152010
   (setq w32-get-true-file-attributes nil)
-
+;;  https://blog.kowalczyk.info/software/the-silver-searcher-for-windows.html
+  (add-to-list 'exec-path "C:/apps/")
   (load-file "~/.spacemacs.d/00avy.el")
   (load-file "~/.spacemacs.d/00transpose-mark.el")
   (load-file "~/.spacemacs.d/00org.el")
@@ -365,12 +366,15 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Dropbox/junk/2018-0325-133648.org")))
  '(package-selected-packages
    (quote
-    (polymode helm-gitignore helm-css-scss ess-smart-equals ess-R-data-view ctable ess julia-mode xterm-color wgrep web-mode transpose-mark tagedit smex smeargle slim-mode shell-pop scss-mode sass-mode pug-mode orgit org2blog metaweblog xml-rpc org-ref pdf-tools key-chord tablist org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode ivy-hydra htmlize helm-bibtex parsebib haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-ivy flyspell-correct evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl counsel-projectile counsel swiper ivy cdlatex biblio biblio-core avy-zap auto-dictionary auctex-latexmk auctex ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox pangu-spacing org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint japanese-holidays indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor-ja evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word ddskk column-enforce-mode clean-aindent-mode avy-migemo auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (flyspell-correct-helm polymode helm-gitignore helm-css-scss ess-smart-equals ess-R-data-view ctable ess julia-mode xterm-color wgrep web-mode transpose-mark tagedit smex smeargle slim-mode shell-pop scss-mode sass-mode pug-mode orgit org2blog metaweblog xml-rpc org-ref pdf-tools key-chord tablist org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode ivy-hydra htmlize helm-bibtex parsebib haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flyspell-correct-ivy flyspell-correct evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl counsel-projectile counsel swiper ivy cdlatex biblio biblio-core avy-zap auto-dictionary auctex-latexmk auctex ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox pangu-spacing org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint japanese-holidays indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor-ja evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word ddskk column-enforce-mode clean-aindent-mode avy-migemo auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
