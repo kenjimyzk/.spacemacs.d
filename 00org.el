@@ -254,17 +254,18 @@
     request))
 ;;
 ;;
-(with-eval-after-load "ess"
-(require 'ob-julia)
+;;(with-eval-after-load "ess"
+;;(require 'ob-julia)
 ;;
 ;; org-babel
 ;;
+(with-eval-after-load "ob"
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
    (R . t)
    (python . t)
-   (julia . t)
+;;  (julia . t)
    (latex . t)
    (emacs-lisp . t)
    ))
