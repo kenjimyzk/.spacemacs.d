@@ -326,8 +326,11 @@ you should place your code here."
 ;;(setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo") 
   ;;http://gntm-mdk.hatenadiary.com/entry/2016/11/03/152010
   (setq w32-get-true-file-attributes nil)
-;;  https://blog.kowalczyk.info/software/the-silver-searcher-for-windows.html
+  (eval-after-load "ispell"
+    '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+  ;;  https://blog.kowalczyk.info/software/the-silver-searcher-for-windows.html
   (add-to-list 'exec-path "C:/apps/")
+;;  (load-file "~/.spacemacs.d/00aspell.el")
   (load-file "~/.spacemacs.d/00avy.el")
   (load-file "~/.spacemacs.d/00transpose-mark.el")
   (load-file "~/.spacemacs.d/00org.el")
