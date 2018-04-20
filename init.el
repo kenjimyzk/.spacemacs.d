@@ -15,7 +15,7 @@ values."
    ;; with a supported type is opened). Possible values are `all', `unused'
    ;sudo apt-get install fonts-ricty-diminished; and `nil'. `unused' will lazy insudo apt-get install fonts-ricty-diminishedstall only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
-   ;; lazy install any layer that support lazy installation even the layers
+   ;; lazy install any layer that support lazy installa/tion even the layers
    ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
@@ -233,7 +233,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -327,7 +327,6 @@ you should place your code here."
 ;;  (load-file "~/.spacemacs.d/00cdlatex.el")
   (load-file "~/.spacemacs.d/00keybinding.el")
   )
-
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables

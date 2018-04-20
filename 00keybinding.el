@@ -1,6 +1,12 @@
 ;; keybinding
+(with-eval-after-load 'helm
+  (require 'bind-key)
+  (bind-key* "C-h" 'backward-delete-char)
+  (bind-key "C-h" nil helm-map))
 (global-set-key (kbd "C-h") 'delete-backward-char)
 ;;(global-set-key (kbd "<f1>") help-map)
+
+
 ;; M-m
 (global-set-key (kbd "C-x M-m") 'back-to-indentation)
 ;; M-i
