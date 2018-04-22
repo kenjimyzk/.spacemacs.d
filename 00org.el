@@ -4,16 +4,16 @@
   (setq org-highlight-latex-and-related '(latex script entities))
   (setq TeX-master t)
   ;; http://qiita.com/kawabata@github/items/1b56ec8284942ff2646b
-  (defun remove-org-newlines-at-cjk-text (&optional _mode)
-    "先頭が '*', '#', '|' でなく、改行の前後が日本の文字の場合はその改行を除去する。"
-    (interactive)
-    (goto-char (point-min))
-    (while (re-search-forward "^\\([^|#*\n].+\\)\\(.\\)\n *\\(.\\)" nil t)
-      (if (and (> (string-to-char (match-string 2)) #x2000)
-               (> (string-to-char (match-string 3)) #x2000))
-          (replace-match "\\1\\2\\3"))
-      (goto-char (point-at-bol))))
-  (add-hook 'org-export-before-processing-hook 'remove-org-newlines-at-cjk-text)
+  ;; (defun remove-org-newlines-at-cjk-text (&optional _mode)
+  ;;   "先頭が '*', '#', '|' でなく、改行の前後が日本の文字の場合はその改行を除去する。"
+  ;;   (interactive)
+  ;;   (goto-char (point-min))
+  ;;   (while (re-search-forward "^\\([^|#*\n].+\\)\\(.\\)\n *\\(.\\)" nil t)
+  ;;     (if (and (> (string-to-char (match-string 2)) #x2000)
+  ;;              (> (string-to-char(package-initialize t) (match-string 3)) #x2000))
+  ;;         (replace-match "\\1\\2\\3"))
+  ;;     (goto-char (point-at-bol))))
+  ;; (add-hook 'org-export-before-processing-hook 'remove-org-newlines-at-cjk-text)
 
   (setq org-latex-default-packages-alist
         '(("" "xltxtra" nil)
@@ -90,17 +90,20 @@
   (add-to-list 'org-export-filter-italic-functions 'my-beamer-structure)
 
 ;;
-  ;; (require 'ox-md)
+;; (require 'ox-md)
 (require 'org-ref)
 (global-set-key (kbd "C-c C-]") 'org-ref)
 ;; org-ref-insert-bibliography-link (C-c ])
+)
 ;;
 ;;
 ;;(with-eval-after-load "ess"
 ;;(require 'ob-julia)
+;; )
 ;;
 ;; org-babel
 ;;
+(with-eval-after-load "ob"
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
