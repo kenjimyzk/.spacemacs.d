@@ -103,18 +103,18 @@
 ;;
 ;; org-babel
 ;;
-(with-eval-after-load "ob"
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '(
-   (R . t)
-   (python . t)
-;;   (julia . t)
-   (latex . t)
-   (emacs-lisp . t)
-   ))
-(setq org-confirm-babel-evaluate nil)
-(setq org-src-fontify-natively t)
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
-)
+;; (with-eval-after-load "ob"
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '(
+;;    (R . t)
+;;    (python . t)
+;; ;;   (julia . t)
+;;    (latex . t)
+;;    (emacs-lisp . t)
+;;    ))
+;; (setq org-confirm-babel-evaluate nil)   ;
+;; (setq org-src-fontify-natively t)
+;; (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+;; )
 
