@@ -322,6 +322,7 @@ you should place your code here."
   (set-fontset-font
    nil 'japanese-jisx0208
    (font-spec :family "Ricty Diminished"))
+  (setq browse-url-browser-function 'eww-browse-url)
   (load-file "~/.spacemacs.d/00avy.el")
   (load-file "~/.spacemacs.d/00transpose-mark.el")
   (load-file "~/.spacemacs.d/00org.el")

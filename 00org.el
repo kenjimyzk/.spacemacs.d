@@ -89,6 +89,7 @@
       (replace-regexp-in-string "\\`\\\\[A-Za-z0-9]+" "\\\\structure" contents)))
   (add-to-list 'org-export-filter-italic-functions 'my-beamer-structure)
 
+(require 'org-eww)
 ;;
 ;; (require 'ox-md)
 (require 'org-ref)
