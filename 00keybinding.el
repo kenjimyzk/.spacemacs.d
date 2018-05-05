@@ -1,11 +1,15 @@
 ;; keybinding
-(global-set-key (kbd "C-h") 'delete-backward-char)
+(with-eval-after-load 'helm
+  (require 'bind-key)
+  (bind-key* "C-h" 'backward-delete-char)
+  (bind-key "C-h" nil helm-map))
+;; (global-set-key (kbd "C-h") 'delete-backward-char)
 ;;(global-set-key (kbd "<f1>") help-map)
 ;; M-m
-(global-set-key (kbd "C-x M-m") 'back-to-indentation)
+;; (global-set-key (kbd "C-x M-m") 'back-to-indentation)
 ;; M-i
-(global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
-(global-set-key (kbd "M-i") 'imenu-anywhere)
+;; (global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
+;; (global-set-key (kbd "M-i") 'imenu-anywhere)
 ;; C-x l
 ;; count-lines-page/count-lines-region (M-=/SPC x c)
 (global-set-key (kbd "C-x M-=") 'count-lines-page)
@@ -24,8 +28,8 @@
 (spacemacs/set-leader-keys "xU" 'downcase-region)
 (spacemacs/set-leader-keys "xC" 'capitalize-region)
 ;; winner (SPC w u/U)
-(global-set-key (kbd "C-q") 'winner-undo)
-(global-set-key (kbd "C-x q") 'winner-redo)
+;; (global-set-key (kbd "C-q") 'winner-undo)
+;; (global-set-key (kbd "C-x q") 'winner-redo)
 ;; expand-region (SPC v/V)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-M-=") 'er/contract-region)

@@ -90,17 +90,69 @@
   (add-to-list 'org-export-filter-italic-functions 'my-beamer-structure)
 
 ;;
-  ;; (require 'ox-md)
+;; (require 'ox-md)
 (require 'org-ref)
 (global-set-key (kbd "C-c C-]") 'org-ref)
 ;; org-ref-insert-bibliography-link (C-c ])
+)
 ;;
 ;;
-;;(with-eval-after-load "ess"
-;;(require 'ob-julia)
-;;
+;; (with-eval-after-load "ess"
+;; (require 'ob-julia)
+;; )
+
 ;; org-babel
-;;
+;; (defun org-cestdiego/init-org-babel ()
+;;   (use-package org-babel
+;;     :init
+;;     (org-babel-do-load-languages
+;;      'org-babel-load-languages
+;;      '((R . t)
+;;        (emacs-lisp . t)
+;;        (python . t)
+;;        ;; (sh . t)
+;;        ;; (haskell . t)
+;;        ;; (js . t)
+;;        (latex . t)
+;;        ;; (gnuplot . t)
+;;        ;; (C . t)
+;;        ;; (sql . t)
+;;        ;; (ditaa . t)
+;;        ))
+;; ;;    (setq org-confirm-babel-evaluate nil)
+;;     ))
+
+;; (eval-after-load 'org
+;;       (lambda()
+;;         (require 'ess-site)
+;;         (require 'ob-R)
+;;         (require 'ob-emacs-lisp)
+;;         (require 'ob-latex)
+        ;; (require 'octave)
+        ;; (require 'ob-python)
+        ;; (require 'ob-sql)
+        ;; (require 'ob-shell)
+        ;; (require 'ob-sqlite)
+        ;; (require 'ob-julia)
+        ;; (require 'ob-perl)
+        ;; (require 'ob-org)
+        ;; (require 'ob-awk)
+        ;; (require 'ob-sed)
+        ;; (require 'ob-css)
+        ;; (require 'ob-js)
+        ;; (require 'ob-stata)
+        ;; (setq org-export-babel-evaluate nil)
+        ;; (setq org-startup-indented t)
+        ;; ;; increase imenu depth to include third level headings
+        ;; (setq org-imenu-depth 3)
+        ;; ;; Set sensible mode for editing dot files
+        ;; (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
+        ;; ;; Update images from babel code blocks automatically
+        ;; (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+        ;; (setq org-src-fontify-natively t)
+        ;; (setq org-src-tab-acts-natively t)
+        ;; (setq org-confirm-babel-evaluate nil)))
+(with-eval-after-load "ob"
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
@@ -110,7 +162,7 @@
    (latex . t)
    (emacs-lisp . t)
    ))
-(setq org-confirm-babel-evaluate nil)
+(setq org-confirm-babel-evaluate nil)   ;
 (setq org-src-fontify-natively t)
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 )

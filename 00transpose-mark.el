@@ -7,3 +7,4 @@
 (spacemacs/set-leader-keys
   "xtm" 'transpose-mark
   "xtM" 'transpose-mark-region-abort)
+
