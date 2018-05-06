@@ -15,6 +15,9 @@
 (mykie:global-set-key "C-w"
   :default backward-kill-word
   :region  kill-region)
+(mykie:global-set-key "M-w"
+  :default kill-whole-line
+  :region  kill-ring-save)
 (mykie:global-set-key "M-c"
   :default capitalize-word
   :region  capitalize-region)
