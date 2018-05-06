@@ -63,8 +63,8 @@
 
 ;; helm-recentf (SPC f r)
 (global-set-key (kbd "C-x f") 'recentf-open-files)
-(global-set-key (kbd "C-x M-q") 'set-fill-column)
-(global-set-key (kbd "C-x M-Q") 'set-fill-prefix)
+(global-set-key (kbd "C-x M-f") 'set-fill-column)
+(global-set-key (kbd "C-x C-M-f") 'set-fill-prefix)
 ;;
 ;;ffap
 (spacemacs/set-leader-keys "fF" 'ffap)
