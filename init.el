@@ -331,6 +331,7 @@ you should place your code here."
   (load-file "~/.spacemacs.d/00auctex.el")
   (load-file "~/.spacemacs.d/00poly.el")
 ;;  (load-file "~/.spacemacs.d/00cdlatex.el")
+  (load-file "~/.spacemacs.d/00fill.el")
   (load-file "~/.spacemacs.d/00keybinding.el")
   )
 ;; Do not write anything past this comment. This is where Emacs will
