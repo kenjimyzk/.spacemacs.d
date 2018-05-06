@@ -1,14 +1,25 @@
-;; keybinding
+(require 'bind-key) ;; keybinding
+(bind-key* "C-h" 'backward-delete-char)
 (with-eval-after-load 'helm
-  (require 'bind-key)
-  (bind-key* "C-h" 'backward-delete-char)
-  (bind-key "C-h" nil helm-map))
+  (bind-key "C-h" nil helm-map)
+  )
+(with-eval-after-load 'org
+  (evil-define-key 'normal evil-org-mode-map "t" 'evil-find-char-to)
+  (evil-define-key 'normal evil-org-mode-map "T" 'evil-find-char-to-backward)
+  )
+(require 'mykie)
+(mykie:global-set-key "C-q"
+                      :default winner-undo
+                      :C-u     winner-redo)
+(mykie:global-set-key "C-w"
+                      :default backward-kill-word
+                      :region  kill-region)
 ;; (global-set-key (kbd "C-h") 'delete-backward-char)
 ;;(global-set-key (kbd "<f1>") help-map)
 ;; M-m
-;; (global-set-key (kbd "C-x M-m") 'back-to-indentation)
+(global-set-key (kbd "C-x M-m") 'back-to-indentation)
 ;; M-i
-;; (global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
+ (global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
 ;; (global-set-key (kbd "M-i") 'imenu-anywhere)
 ;; C-x l
 ;; count-lines-page/count-lines-region (M-=/SPC x c)
@@ -18,15 +29,13 @@
 ;; C-M-c (C-[ C-])
 (global-set-key (kbd "C-M-]") 'exit-recursive-edit)
 ;;ca​se (SPC x u/U)
-(global-set-key (kbd "M-U") 'downcase-word)
-(global-set-key (kbd "C-x M-l") 'downcase-region)
-(global-set-key (kbd "C-x M-l") 'downcase-region)
-(global-set-key (kbd "C-x M-u") 'upcase-region)
-(global-set-key (kbd "C-x M-c") 'capitalize-region)
-
-(spacemacs/set-leader-keys "xu" 'upcase-region)
-(spacemacs/set-leader-keys "xU" 'downcase-region)
-(spacemacs/set-leader-keys "xC" 'capitalize-region)
+;; (global-set-key (kbd "M-U") 'downcase-word)
+;; (global-set-key (kbd "C-x M-l") 'downcase-region)
+;; (global-set-key (kbd "C-x M-u") 'upcase-region)
+;; (global-set-key (kbd "C-x M-c") 'capitalize-region)
+;; (spacemacs/set-leader-keys "xu" 'upcase-region)
+;; (spacemacs/set-leader-keys "xU" 'downcase-region)
+;; (spacemacs/set-leader-keys "xC" 'capitalize-region)
 ;; winner (SPC w u/U)
 ;; (global-set-key (kbd "C-q") 'winner-undo)
 ;; (global-set-key (kbd "C-x q") 'winner-redo)
@@ -40,22 +49,23 @@
 (global-set-key (kbd "C-x f") 'recentf-open-files)
 (global-set-key (kbd "C-x ,") 'set-fill-column)
 ;; (global-set-key (kbd "C-x .") 'set-fill-prefix)
-;; 
+;;
 ;;ffap
 (spacemacs/set-leader-keys "fF" 'ffap)
 ;;helm
 (spacemacs/set-leader-keys "H" 'helm-command-prefix)
 ;; helm-mini (SPC b b)
 ;; (global-set-key (kbd "C-x C-h") 'helm-mini)
-(global-set-key (kbd "C-x M-y") 'helm-show-kill-ring)
+;; helm-show-kill-ring (SPC r y)
+;; (global-set-key (kbd "C-x M-y") 'helm-show-kill-ring)
 ;;
 ;; magit-status (SPC g s)
-(global-set-key (kbd "C-x C-g") 'magit-status)
+;;(global-set-key (kbd "C-x C-g") 'magit-status)
 ;;
 (require 'misc)
 (global-set-key (kbd "C-x C-y") 'copy-from-above-command)
 ;; kill-whole-line (C-S-backspace)
-;; bacward-kill-word (C-backspace)
+;; backward-kill-word (C-backspace)
 ;;
 ;; indent-region (C-M-\\)
 (global-set-key (kbd "M-\\") 'cycle-spacing)
@@ -65,8 +75,10 @@
 (define-key key-translation-map (kbd "C-x C-u") (kbd "​"))
 ;;
 ;; wdired  ;; wdired
-(when (require 'wdired nil t)
-  (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode))
+;; (when (require 'wdired nil t)
+;;   (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode))
+(with-eval-after-load 'wdired
+  (bind-key "e" 'wdired-change-to-wdired-mode dired-mode-map))
 ;;
 ;; (global-set-key (kbd "M-V") 'scroll-up-command)
 ;; (global-set-key (kbd "C-M-v") 'scroll-other-window-down)
