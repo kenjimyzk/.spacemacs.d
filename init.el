@@ -334,7 +334,6 @@ you should place your code here."
   (load-file "~/.spacemacs.d/00avy.el")
   (load-file "~/.spacemacs.d/00transpose-mark.el")
   (load-file "~/.spacemacs.d/00org.el")
-;;  (load-file "~/.spacemacs.d/00swoop.el")
   (load-file "~/.spacemacs.d/00ddskk.el")
   (load-file "~/.spacemacs.d/00auctex.el")
   (load-file "~/.spacemacs.d/00cdlatex.el")
