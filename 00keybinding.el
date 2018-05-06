@@ -1,33 +1,46 @@
 (require 'bind-key) ;; keybinding
 (bind-key* "C-h" 'backward-delete-char)
 (with-eval-after-load 'helm
-  (bind-key "C-h" nil helm-map)
-  )
+  (bind-key "C-h" nil helm-map))
+(with-eval-after-load 'wdired
+  (bind-key "e" 'wdired-change-to-wdired-mode dired-mode-map))
 (with-eval-after-load 'org
   (evil-define-key 'normal evil-org-mode-map "t" 'evil-find-char-to)
-  (evil-define-key 'normal evil-org-mode-map "T" 'evil-find-char-to-backward)
-  )
+  (evil-define-key 'normal evil-org-mode-map "T" 'evil-find-char-to-backward))
+
 (require 'mykie)
 (mykie:global-set-key "C-q"
-                      :default winner-undo
-                      :C-u     winner-redo)
+  :default winner-undo
+  :C-u     winner-redo)
 (mykie:global-set-key "C-w"
-                      :default backward-kill-word
-                      :region  kill-region)
-;; (global-set-key (kbd "C-h") 'delete-backward-char)
-;;(global-set-key (kbd "<f1>") help-map)
+  :default backward-kill-word
+  :region  kill-region)
+(mykie:global-set-key "M-c"
+  :default capitalize-word
+  :region  capitalize-region)
+(mykie:global-set-key "M-u"
+  :default upcase-word
+  :region  upcase-region)
+(mykie:global-set-key "M-l"
+  :default downcase-word
+  :region  downcase-region)
+(mykie:global-set-key "M-U"
+  :default downcase-word
+  :region  downcase-region)
+
 ;; M-m
 (global-set-key (kbd "C-x M-m") 'back-to-indentation)
 ;; M-i
  (global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
 ;; (global-set-key (kbd "M-i") 'imenu-anywhere)
-;; C-x l
-;; count-lines-page/count-lines-region (M-=/SPC x c)
 (global-set-key (kbd "C-x M-=") 'count-lines-page)
 ;; M-o
 (global-set-key (kbd "C-x M-o") 'facemenu-keymap)
 ;; C-M-c (C-[ C-])
 (global-set-key (kbd "C-M-]") 'exit-recursive-edit)
+
+;; C-x l
+;; count-lines-page/count-lines-region (M-=/SPC x c)
 ;;ca​se (SPC x u/U)
 ;; (global-set-key (kbd "M-U") 'downcase-word)
 ;; (global-set-key (kbd "C-x M-l") 'downcase-region)
@@ -39,26 +52,29 @@
 ;; winner (SPC w u/U)
 ;; (global-set-key (kbd "C-q") 'winner-undo)
 ;; (global-set-key (kbd "C-x q") 'winner-redo)
+
 ;; expand-region (SPC v/V)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-M-=") 'er/contract-region)
+
 ;; open junk-code (SPC f J)
 (setq open-junk-file-format "~/Dropbox/junk/%Y-%m%d-%H%M%S.")
 (global-set-key (kbd "C-x C-z") 'open-junk-file)
+
 ;; helm-recentf (SPC f r)
 (global-set-key (kbd "C-x f") 'recentf-open-files)
-(global-set-key (kbd "C-x ,") 'set-fill-column)
-;; (global-set-key (kbd "C-x .") 'set-fill-prefix)
+(global-set-key (kbd "C-x M-q") 'set-fill-column)
+(global-set-key (kbd "C-x M-Q") 'set-fill-prefix)
 ;;
 ;;ffap
 (spacemacs/set-leader-keys "fF" 'ffap)
 ;;helm
 (spacemacs/set-leader-keys "H" 'helm-command-prefix)
+
 ;; helm-mini (SPC b b)
 ;; (global-set-key (kbd "C-x C-h") 'helm-mini)
 ;; helm-show-kill-ring (SPC r y)
 ;; (global-set-key (kbd "C-x M-y") 'helm-show-kill-ring)
-;;
 ;; magit-status (SPC g s)
 ;;(global-set-key (kbd "C-x C-g") 'magit-status)
 ;;
@@ -77,21 +93,19 @@
 ;; wdired  ;; wdired
 ;; (when (require 'wdired nil t)
 ;;   (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode))
-(with-eval-after-load 'wdired
-  (bind-key "e" 'wdired-change-to-wdired-mode dired-mode-map))
 ;;
 ;; (global-set-key (kbd "M-V") 'scroll-up-command)
 ;; (global-set-key (kbd "C-M-v") 'scroll-other-window-down)
 ;; (global-set-key (kbd "C-M-S-v") 'scroll-other-window)
 ;;
-(define-key key-translation-map (kbd "M-1") (kbd "C-1"))
-(define-key key-translation-map (kbd "M-2") (kbd "C-2"))
-(define-key key-translation-map (kbd "M-3") (kbd "C-3"))
-(define-key key-translation-map (kbd "M-4") (kbd "C-4"))
-(define-key key-translation-map (kbd "M-5") (kbd "C-5"))
-(define-key key-translation-map (kbd "M-6") (kbd "C-6"))
-(define-key key-translation-map (kbd "M-7") (kbd "C-7"))
-(define-key key-translation-map (kbd "M-8") (kbd "C-8"))
-(define-key key-translation-map (kbd "M-9") (kbd "C-9"))
-(define-key key-translation-map (kbd "M-0") (kbd "C-0"))
+;; (define-key key-translation-map (kbd "M-1") (kbd "C-1"))
+;; (define-key key-translation-map (kbd "M-2") (kbd "C-2"))
+;; (define-key key-translation-map (kbd "M-3") (kbd "C-3"))
+;; (define-key key-translation-map (kbd "M-4") (kbd "C-4"))
+;; (define-key key-translation-map (kbd "M-5") (kbd "C-5"))
+;; (define-key key-translation-map (kbd "M-6") (kbd "C-6"))
+;; (define-key key-translation-map (kbd "M-7") (kbd "C-7"))
+;; (define-key key-translation-map (kbd "M-8") (kbd "C-8"))
+;; (define-key key-translation-map (kbd "M-9") (kbd "C-9"))
+;; (define-key key-translation-map (kbd "M-0") (kbd "C-0"))
 
