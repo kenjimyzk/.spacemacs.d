@@ -49,9 +49,6 @@ values."
      latex
      markdown
      org
-     ;; (org-babel :location local
-     ;;            :variables
-     ;;            setq org-confirm-babel-evaluate nil)
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
