@@ -1,6 +1,7 @@
 ;ddskk
 (global-set-key (kbd "C-x j") 'skk-mode)
 (with-eval-after-load "ddskk-autoloads"
+  (setq skk-large-jisyo "~/.emacs.d/skk-get-jisyo/SKK-JISYO.L")
   (setq mac-pass-control-to-system nil)
   ;;モードで RET を入力したときに確定のみ行い、改行はしない
   (setq skk-egg-like-newline t)
@@ -70,7 +71,7 @@
 state and in `skk-j-mode'."
   (when (and (eq evil-state 'insert) (bound-and-true-p skk-j-mode))
     ad-do-it))
-;;
+;; 
 (defadvice evil-refresh-cursor
     (around evil-refresh-cursor-unless-skk-mode activate)
   ;; Evilによるカーソルの変更を, 挿入ステートかつ日本語モードではない場合に限定
