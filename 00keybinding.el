@@ -26,7 +26,7 @@
 (mykie:global-set-key "M-c"
   :default capitalize-word
   :region  capitalize-region)
-(mykie:global-set "M-u"
+(mykie:global-set-key "M-u"
   :default upcase-word
   :region  upcase-region)
 (mykie:global-set-key "M-l"
