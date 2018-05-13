@@ -1,8 +1,8 @@
 (with-eval-after-load "ox"
   (require 'ox-latex)
-  (setq org-src-fontify-natively t)
   (setq org-highlight-latex-and-related '(latex script entities))
-  (setq TeX-master t)
+  (setq org-src-fontify-natively t)
+  ;; (setq TeX-master t)
   ;; http://qiita.com/kawabata@github/items/1b56ec8284942ff2646b
   (defun remove-org-newlines-at-cjk-text (&optional _mode)
     "先頭が '*', '#', '|' でなく、改行の前後が日本の文字の場合はその改行を除去する。"
@@ -71,15 +71,16 @@
   (add-to-list 'org-export-filter-final-output-functions
                'my-org-latex-filter-verbatim)
 
+(setq org-latex-caption-above nil)
 ;; fig / tab
-  (defun my-org-latex-filter-figtab (text backend _info)
-    (when (eq backend 'latex)
-      (replace-regexp-in-string
-       "^\\\\begin{\\(figure\\|table\\)}$"
-       "\\\\begin{\\1}[htb]" text
-       )))
-  (add-to-list 'org-export-filter-final-output-functions
-               'my-org-latex-filter-figtab)
+  ;; (defun my-org-latex-filter-figtab (text backend _info)
+  ;;   (when (eq backend 'latex)
+  ;;     (replace-regexp-in-string
+  ;;      "^\\\\begin{\\(figure\\|table\\)}$"
+  ;;      "\\\\begin{\\1}[htbp]" text
+  ;;      )))
+  ;; (add-to-list 'org-export-filter-final-output-functions
+  ;;              'my-org-latex-filter-figtab)
 
 ;; beamer
   (require 'ox-beamer)
@@ -90,81 +91,26 @@
   (add-to-list 'org-export-filter-italic-functions 'my-beamer-structure)
 
 (require 'org-eww)
+)
 ;;
 ;; (require 'ox-md)
-(require 'org-ref)
-(global-set-key (kbd "C-c C-]") 'org-ref)
-;; org-ref-insert-bibliography-link (C-c ])
-)
-;;
-;;
-;; (with-eval-after-load "ess"
-;; (require 'ob-julia)
-;; )
+(with-eval-after-load "org-ref"
+  (global-set-key (kbd "C-c C-]") 'org-ref)
+  (global-set-key (kbd "C-c (") 'reftex-label)
+  (global-set-key (kbd "C-c )") 'reftex-reference)
+  )
 
-;; org-babel
-;; (defun org-cestdiego/init-org-babel ()
-;;   (use-package org-babel
-;;     :init
-;;     (org-babel-do-load-languages
-;;      'org-babel-load-languages
-;;      '((R . t)
-;;        (emacs-lisp . t)
-;;        (python . t)
-;;        ;; (sh . t)
-;;        ;; (haskell . t)
-;;        ;; (js . t)
-;;        (latex . t)
-;;        ;; (gnuplot . t)
-;;        ;; (C . t)
-;;        ;; (sql . t)
-;;        ;; (ditaa . t)
-;;        ))
-;; ;;    (setq org-confirm-babel-evaluate nil)
-;;     ))
 
-;; (eval-after-load 'org
-;;       (lambda()
-;;         (require 'ess-site)
-;;         (require 'ob-R)
-;;         (require 'ob-emacs-lisp)
-;;         (require 'ob-latex)
-        ;; (require 'octave)
-        ;; (require 'ob-python)
-        ;; (require 'ob-sql)
-        ;; (require 'ob-shell)
-        ;; (require 'ob-sqlite)
-        ;; (require 'ob-julia)
-        ;; (require 'ob-perl)
-        ;; (require 'ob-org)
-        ;; (require 'ob-awk)
-        ;; (require 'ob-sed)
-        ;; (require 'ob-css)
-        ;; (require 'ob-js)
-        ;; (require 'ob-stata)
-        ;; (setq org-export-babel-evaluate nil)
-        ;; (setq org-startup-indented t)
-        ;; ;; increase imenu depth to include third level headings
-        ;; (setq org-imenu-depth 3)
-        ;; ;; Set sensible mode for editing dot files
-        ;; (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
-        ;; ;; Update images from babel code blocks automatically
-        ;; (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
-        ;; (setq org-src-fontify-natively t)
-        ;; (setq org-src-tab-acts-natively t)
-        ;; (setq org-confirm-babel-evaluate nil)))
 (with-eval-after-load "ob"
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '(
-   (R . t)
-   (python . t)
-;;   (julia . t)
-   (latex . t)
-   (emacs-lisp . t)
-   ))
-(setq org-confirm-babel-evaluate nil)   ;
-(setq org-src-fontify-natively t)
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
-)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (R . t)
+     (python . t)
+     (latex . t)
+     (emacs-lisp . t)
+     ))
+  (setq org-confirm-babel-evaluate nil)   ;
+  (setq org-src-fontify-natively t)
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append))
 
