@@ -39,10 +39,6 @@
   :default ispell-word
   :region ispell-region
   :C-u ispell-buffer)
-(mykie:global-set-key "M-$"
-  :default ispell-word
-  :region ispell-region
-  :C-u ispell-buffer)
 (global-set-key (kbd "C-M-$") 'ispell-complete-word)
 ;; M-m
 (global-set-key (kbd "C-x M-m") 'back-to-indentation)
