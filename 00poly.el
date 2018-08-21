@@ -1,3 +1,9 @@
+(with-eval-after-load "ess"
+  (add-hook 'ess-mode-hook
+            (lambda ()
+              (ess-toggle-underscore nil)))
+)
+
 (require 'poly-R)
 (require 'poly-markdown)
 ;;; M-n
@@ -17,7 +23,7 @@
     (insert "```\n")
     (previous-line)))
 ;;
-(require 'e2wm-R)
+;; (require 'e2wm-R)
 ;; ソースコードにインライン画像を埋め込む
 ;; (require 'inlineR)
 ;; (define-key ess-mode-map "\C-ci" 'inlineR-insert-tag)
