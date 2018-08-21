@@ -88,7 +88,9 @@
 (spacemacs/set-leader-keys "fF" 'ffap)
 ;;helm
 (spacemacs/set-leader-keys "H" 'helm-command-prefix)
-;;
+;;avy-jump
+(spacemacs/set-leader-keys "jW" 'avy-goto-word-0)
+;; n: copy, m: mark, x: kill
 ;; indent-region (C-M-\\)
 (global-set-key (kbd "M-\\") 'cycle-spacing)
 (global-set-key (kbd "C-x C-\\") 'quoted-insert)
