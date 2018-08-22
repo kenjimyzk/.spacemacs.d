@@ -80,13 +80,6 @@
 ;; (global-set-key (kbd "C-x M-y") 'helm-show-kill-ring)
 ;; magit-status (SPC g s)
 ;;(global-set-key (kbd "C-x C-g") 'magit-status)
-;ffap
-(spacemacs/set-leader-keys "fF" 'ffap)
-;;helm
-(spacemacs/set-leader-keys "H" 'helm-command-prefix)
-;;avy-jump
-(spacemacs/set-leader-keys "jW" 'avy-goto-word-0)
-;; n: copy, m: mark, x: kill
 ;; indent-region (C-M-\\)
 (global-set-key (kbd "M-\\") 'cycle-spacing)
 (global-set-key (kbd "C-x C-\\") 'quoted-insert)
@@ -94,10 +87,10 @@
 ;; C-x 8 RET zero width space/M-x ucs-insert zero width space
 (define-key key-translation-map (kbd "C-x C-u") (kbd "​"))
 ;;
-;; wdired  ;; wdired
-;; (when (require 'wdired nil t)
-;;   (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode))
-;;
+;; wdired
+(when (require 'wdired nil t)
+   (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode))
+
 ;; (global-set-key (kbd "M-V") 'scroll-up-command)
 ;; (global-set-key (kbd "C-M-v") 'scroll-other-window-down)
 ;; (global-set-key (kbd "C-M-S-v") 'scroll-other-window)
@@ -113,3 +106,10 @@
 ;; (define-key key-translation-map (kbd "M-9") (kbd "C-9"))
 ;; (define-key key-translation-map (kbd "M-0") (kbd "C-0"))
 
+;;ffap
+(spacemacs/set-leader-keys "fF" 'ffap)
+;;helm
+(spacemacs/set-leader-keys "H" 'helm-command-prefix)
+;;avy-jump
+(spacemacs/set-leader-keys "jW" 'avy-goto-word-0)
+;; n: copy, m: mark, x: kill
