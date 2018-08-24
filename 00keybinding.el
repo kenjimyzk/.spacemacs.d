@@ -103,6 +103,4 @@
 (spacemacs/set-leader-keys "fF" 'ffap)
 ;;helm
 (spacemacs/set-leader-keys "H" 'helm-command-prefix)
-;;avy-jump
-(spacemacs/set-leader-keys "jW" 'avy-goto-word-0)
 ;; n: copy, m: mark, x: kill
