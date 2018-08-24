@@ -16,29 +16,24 @@
 ;;     (t  (fill-paragraph))
 ;;     ))
 (global-set-key (kbd "C-x M-q") 'unfill-paragraph)
-
 ;;
-(defun my-sentence ()
-  "Change a multi-line paragraph into several sencences"
-  (interactive)
-  (unfill-paragraph)
-  (goto-char (point-at-bol))
-  (save-excursion
-    (while (re-search-forward (sentence-end) (point-at-eol) t)
-      (replace-match "\\1\n"))
-    ))
 ;; (defun my-sentence ()
 ;;   "Change a multi-line paragraph into several sencences"
 ;;   (interactive)
-;;   (progn (unfill-paragraph)
-;; 	 (goto-char (point-at-bol))
-;; 	 (save-excursion
-;; 	   (while (re-search-forward "\\(\\.\\|?\\|!\\)\s+" (point-at-eol) t)
-;; 	     (replace-match "\\1\n")))))
+;;   (unfill-paragraph)
+;;   (goto-char (point-at-bol))
+;;   (save-excursion
+;;     (while (re-search-forward (sentence-end) (point-at-eol) t)
+;;       (replace-match "\\1\n"))
+;;     ))
+(defun my-sentence ()
+  "Change a multi-line paragraph into several sencences"
+  (interactive)
+  (progn (unfill-paragraph)
+	 (goto-char (point-at-bol))
+	 (save-excursion
+	   (while (re-search-forward "\\(\\.\\|?\\|!\\)\s+" (point-at-eol) t)
+	     (replace-match "\\1\n")))))
 
 (global-set-key (kbd "C-x C-M-q") 'my-sentence)
-
-
-
-
 

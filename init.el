@@ -322,13 +322,18 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (require 'mozc)                                 ; mozcの読み込み
   (set-language-environment "Japanese")           ; 言語環境を"japanese"に
-  (setq default-input-method "japanese-mozc")     ; IMEをjapanes-mozcに
   (prefer-coding-system 'utf-8)
   (set-fontset-font
    nil 'japanese-jisx0208
    (font-spec :family "Ricty Diminished"))
+  (when (equal system-type 'gnu/linux)
+    (require 'mozc)                                 ; mozcの読み込み
+    (setq default-input-method "japanese-mozc")     ; IMEをjapanes-MOOC
+    ;; (setq exec-path (cons "/anaconda3/bin" exec-path))
+    ;; (setenv "PATH"
+    ;;         (concat "/anaconda3/envs/bin:" (getenv "PATH")))
+     )
   (setq browse-url-browser-function 'eww-browse-url)
   (setq global-evil-mc-mode t)
   (load-file "~/.spacemacs.d/00avy.el")
@@ -348,25 +353,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(avy-migemo-function-names
-   (quote
-    ((counsel-clj :around avy-migemo-disable-around)
-     (counsel-grep :around counsel-grep-migemo-around)
-     counsel-grep-function-migemo counsel-grep-occur-migemo
-     (counsel-git-occur :around counsel-git-occur-migemo-around)
-     (counsel-find-file-occur :around counsel-find-file-occur-migemo-around)
-     swiper--add-overlays-migemo
-     (swiper--re-builder :around swiper--re-builder-migemo-around)
-     (ivy--regex :around ivy--regex-migemo-around)
-     (ivy--regex-ignore-order :around ivy--regex-ignore-order-migemo-around)
-     (ivy--regex-plus :around ivy--regex-plus-migemo-around)
-     ivy--highlight-default-migemo ivy-occur-revert-buffer-migemo ivy-occur-press-migemo avy-migemo-goto-char avy-migemo-goto-char-2 avy-migemo-goto-char-in-line avy-migemo-goto-char-timer avy-migemo-goto-subword-1 avy-migemo-goto-word-1 avy-migemo-isearch avy-migemo-org-goto-heading-timer avy-migemo--overlay-at avy-migemo--overlay-at-full)))
- '(org-agenda-files
-   (quote
-    ("~/work/test-babel/test-paper.org" "~/work/test-babel/test2.org")))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper mozc yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic mykie polymode e2wm-R inlineR e2wm window-layout transpose-mark helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-statistics company-auctex company auto-yasnippet yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode auctex-latexmk auctex org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core avy-zap xterm-color smeargle shell-pop orgit multi-term mmm-mode markdown-toc markdown-mode magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flyspell-correct-helm flyspell-correct evil-magit magit magit-popup git-commit ghub let-alist with-editor ess-smart-equals ess-R-data-view ctable ess julia-mode eshell-z eshell-prompt-extras esh-help auto-dictionary pangu-spacing japanese-holidays evil-tutor-ja ddskk cdb ccc avy-migemo migemo org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed ace-link ace-jump-helm-line helm helm-core popup which-key undo-tree org-plus-contrib hydra evil-unimpaired f s dash async aggressive-indent adaptive-wrap ace-window avy))))
+    (ess projectile ivy magit ghub auctex-latexmk yapfify xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package transpose-mark toc-org tagedit spaceline smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin polymode pip-requirements persp-mode pcre2el paradox pangu-spacing orgit org-ref org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mykie multi-term mozc move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode japanese-holidays indent-guide hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor-ja evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-data-view eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diminish diff-hl define-word ddskk cython-mode column-enforce-mode clean-aindent-mode avy-zap avy-migemo auto-highlight-symbol auto-dictionary auto-compile auctex anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

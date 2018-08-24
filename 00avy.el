@@ -7,7 +7,8 @@
 (global-set-key (kbd "M-g M-j") 'avy-goto-char-2)
 (global-set-key (kbd "M-g t") 'avy-goto-char-timer)
 (global-set-key (kbd "M-g SPC") 'avy-goto-word-0)
-;;
+;;avy-jump
+(spacemacs/set-leader-keys "jW" 'avy-goto-word-0)
 ;; avy-zap
 ;;http://rubikitch.com/2016/02/15/sd1507-builtin/
 ;;http://rubikitch.com/2015/05/31/avy-zap/
