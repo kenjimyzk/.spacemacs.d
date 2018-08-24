@@ -322,13 +322,18 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (require 'mozc)                                 ; mozcの読み込み
   (set-language-environment "Japanese")           ; 言語環境を"japanese"に
-  (setq default-input-method "japanese-mozc")     ; IMEをjapanes-mozcに
   (prefer-coding-system 'utf-8)
   (set-fontset-font
    nil 'japanese-jisx0208
    (font-spec :family "Ricty Diminished"))
+  (when (equal system-type 'gnu/linux)
+    (require 'mozc)                                 ; mozcの読み込み
+    (setq default-input-method "japanese-mozc")     ; IMEをjapanes-MOOC
+    (setq exec-path (cons "/anaconda3/bin" exec-path))
+    ;; (setenv "PATH"
+    ;;         (concat "/anaconda3/bin:" (getenv "PATH")))
+    )
   (setq browse-url-browser-function 'eww-browse-url)
   (setq global-evil-mc-mode t)
   (load-file "~/.spacemacs.d/00avy.el")
