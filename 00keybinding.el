@@ -1,17 +1,21 @@
-(require 'misc)
-(global-set-key (kbd "C-x C-y") 'copy-from-above-command)
-;; kill-whole-line (C-S-backspace)
-;; backward-kill-word (C-backspace)
-
-(require 'bind-key) ;; keybinding
+(require 'bind-key)
 (bind-key* "C-h" 'backward-delete-char)
+;; http://emacs.rubikitch.com/backward-delete-char/
 (with-eval-after-load 'helm
   (bind-key "C-h" nil helm-map))
-(with-eval-after-load 'wdired
-  (bind-key "e" 'wdired-change-to-wdired-mode dired-mode-map))
 (with-eval-after-load 'org
   (evil-define-key 'normal evil-org-mode-map "t" 'evil-find-char-to)
   (evil-define-key 'normal evil-org-mode-map "T" 'evil-find-char-to-backward))
+
+(require 'wdired)
+(bind-keys :map dired-mode-map
+           ("o" . dired-omit-mode)
+           ("e" . wdired-change-to-wdired-mode))
+
+(require 'misc)
+(bind-key "C-x C-y" 'copy-from-above-command)
+;; kill-whole-line (C-S-backspace)
+;; backward-kill-word (C-backspace)
 
 (require 'mykie)
 (mykie:global-set-key "C-q"
@@ -39,17 +43,18 @@
   :default ispell-word
   :region ispell-region
   :C-u ispell-buffer)
-(global-set-key (kbd "C-M-$") 'ispell-complete-word)
+(bind-key "C-M-$" 'ispell-complete-word)
+
 ;; M-m
-(global-set-key (kbd "C-x M-m") 'back-to-indentation)
+;; (global-set-key (kbd "C-x M-m") 'back-to-indentation)
 ;; M-i
-(global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
+;; (global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
 ;; M-o
-(global-set-key (kbd "C-x M-o") 'facemenu-keymap)
+;; (global-set-key (kbd "C-x M-o") 'facemenu-keymap)
 ;; C-=
-(global-set-key (kbd "C-x M-=") 'count-lines-page)
+;; (global-set-key (kbd "C-x M-=") 'count-lines-page)
 ;; C-M-c (C-[ C-])
-(global-set-key (kbd "C-M-]") 'exit-recursive-edit)
+;; (global-set-key (kbd "C-M-]") 'exit-recursive-edit)
 ;; C-x l
 ;; count-lines-page/count-lines-region (M-=/SPC x c)
 ;; case (SPC x u/U)
@@ -65,15 +70,17 @@
 ;; (global-set-key (kbd "C-x q") 'winner-redo)
 
 ;; expand-region (SPC v/V)
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-M-=") 'er/contract-region)
+;; (global-set-key (kbd "C-=") 'er/expand-region)
+;; (global-set-key (kbd "C-M-=") 'er/contract-region)
+(bind-key "C-=" 'er/expand-region)
+(bind-key "C-M-=" 'er/contract-region)
 ;; open junk-code (SPC f J)
 (setq open-junk-file-format "~/Dropbox/junk/%Y-%m%d-%H%M%S.")
-(global-set-key (kbd "C-x C-z") 'open-junk-file)
+;; (global-set-key (kbd "C-x C-z") 'open-junk-file)
 ;; helm-recentf (SPC f r)
-(global-set-key (kbd "C-x f") 'recentf-open-files)
-(global-set-key (kbd "C-x M-f") 'set-fill-column)
-(global-set-key (kbd "C-x C-M-f") 'set-fill-prefix)
+;; (global-set-key (kbd "C-x f") 'recentf-open-files)
+;; (global-set-key (kbd "C-x M-f") 'set-fill-column)
+;; (global-set-key (kbd "C-x C-M-f") 'set-fill-prefix)
 ;; helm-mini (SPC b b)
 ;; (global-set-key (kbd "C-x C-h") 'helm-mini)
 ;; helm-show-kill-ring (SPC r y)
@@ -81,30 +88,16 @@
 ;; magit-status (SPC g s)
 ;;(global-set-key (kbd "C-x C-g") 'magit-status)
 ;; indent-region (C-M-\\)
-(global-set-key (kbd "M-\\") 'cycle-spacing)
-(global-set-key (kbd "C-x C-\\") 'quoted-insert)
+;; (global-set-key (kbd "M-\\") 'cycle-spacing)
+;; (global-set-key (kbd "C-x C-\\") 'quoted-insert)
+(bind-key "M-\\" 'cycle-spacing)
+(bind-key "C-x C-\\" 'quoted-insert)
 ;;
 ;; C-x 8 RET zero width space/M-x ucs-insert zero width space
-(define-key key-translation-map (kbd "C-x C-u") (kbd "​"))
+;; (define-key key-translation-map (kbd "C-x C-u") (kbd "​"))
+(bind-key "C-x C-u" "​" key-translation-map)
 ;;
-;; wdired
-(when (require 'wdired nil t)
-   (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode))
-
-;; (global-set-key (kbd "M-V") 'scroll-up-command)
-;; (global-set-key (kbd "C-M-v") 'scroll-other-window-down)
-;; (global-set-key (kbd "C-M-S-v") 'scroll-other-window)
 ;;
-(define-key key-translation-map (kbd "M-1") (kbd "C-1"))
-(define-key key-translation-map (kbd "M-2") (kbd "C-2"))
-(define-key key-translation-map (kbd "M-3") (kbd "C-3"))
-(define-key key-translation-map (kbd "M-4") (kbd "C-4"))
-(define-key key-translation-map (kbd "M-5") (kbd "C-5"))
-(define-key key-translation-map (kbd "M-6") (kbd "C-6"))
-(define-key key-translation-map (kbd "M-7") (kbd "C-7"))
-(define-key key-translation-map (kbd "M-8") (kbd "C-8"))
-(define-key key-translation-map (kbd "M-9") (kbd "C-9"))
-(define-key key-translation-map (kbd "M-0") (kbd "C-0"))
 
 ;;ffap
 (spacemacs/set-leader-keys "fF" 'ffap)
