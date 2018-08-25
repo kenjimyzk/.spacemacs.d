@@ -46,7 +46,7 @@
 (bind-key "C-M-$" 'ispell-complete-word)
 
 ;; M-m
-;; (global-set-key (kbd "C-x M-m") 'back-to-indentation)
+(global-set-key (kbd "C-x M-m") 'back-to-indentation)
 ;; M-i
 ;; (global-set-key (kbd "C-x M-i") 'tab-to-tab-stop)
 ;; M-o
