@@ -22,9 +22,26 @@
     (newline)
     (insert "```\n")
     (previous-line)))
+
+(defun rmarkdown-to-html ()
+  (interactive)
+  "Run rmarkdown::rnder on the current file"
+  "https://gist.github.com/kohske/9128031"
+  (shell-command
+   (format "Rscript -e \"rmarkdown::render ('%s')\""
+           (shell-quote-argument (buffer-file-name)))))
+
+(define-key poly-markdown+r-mode-map (kbd "C-c h") 'rmarkdown-to-html)
 ;;
 ;; (require 'e2wm-R)
 ;; ソースコードにインライン画像を埋め込む
-;; (require 'inlineR)
-;; (define-key ess-mode-map "\C-ci" 'inlineR-insert-tag)
-;; (setq inlineR-re-funcname ".*plot.*\\|.*gg.*") ;; 作図関数追加
+(require 'inlineR)
+;;(define-key ess-mode-map "\C-ci" 'inlineR-insert-tag)
+(define-key ess-mode-map (kbd "C-c i") 'inlineR-insert-tag)
+(setq inlineR-re-funcname ".*plot.*\\|.*gg.*")
+(defun iimage-mode-toggle ()
+  (interactive)
+  (iimage-mode 'toggle))
+(define-key ess-mode-map (kbd "C-c I") 'iimage-mode-toggle)
+
+
