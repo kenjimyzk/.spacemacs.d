@@ -159,7 +159,7 @@ values."
    dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
-   dotspacemacs-emacs-leader-key "M-S-SPC"
+   dotspacemacs-emacs-leader-key "M-SPC"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key nil
@@ -324,10 +324,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (set-language-environment "Japanese")           ; 言語環境を"japanese"に
   (prefer-coding-system 'utf-8)
-  (set-fontset-font
-   nil 'japanese-jisx0208
-   (font-spec :family "Ricty Diminished"))
   (when (equal system-type 'gnu/linux)
+    (set-fontset-font
+     nil 'japanese-jisx0208
+     (font-spec :family "Ricty Diminished"))
     (require 'mozc)                                 ; mozcの読み込み
     (setq default-input-method "japanese-mozc")     ; IMEをjapanes-MOOC
      )
@@ -337,6 +337,7 @@ you should place your code here."
     (setq yas-snippet-dirs
           '("~/.spacemacs.d/mysnippets"
             "~/.spacemacs.d/snippets")))
+
   (load-file "~/.spacemacs.d/00avy.el")
   (load-file "~/.spacemacs.d/00transpose-mark.el")
   (load-file "~/.spacemacs.d/00org.el")
