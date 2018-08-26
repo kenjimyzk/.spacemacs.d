@@ -107,6 +107,7 @@
    '(
      (R . t)
      (python . t)
+     (ein . t)
      (latex . t)
      (emacs-lisp . t)
      ))
