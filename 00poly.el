@@ -30,7 +30,6 @@
   (shell-command
    (format "Rscript -e \"rmarkdown::render ('%s')\""
            (shell-quote-argument (buffer-file-name)))))
-
 (define-key poly-markdown+r-mode-map (kbd "C-c h") 'rmarkdown-to-html)
 ;;
 ;; (require 'e2wm-R)
