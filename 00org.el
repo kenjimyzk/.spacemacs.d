@@ -22,9 +22,13 @@
           ("normalem" "ulem" nil)
           ("" "listings" nil)
           ))
-
+  (setq org-latex-caption-above nil)
   (setq org-latex-classes nil)
-
+  ;; PDFs visited in Org-mode are opened in Evince (and not in the default choice) https://stackoverflow.com/a/8836108/789593
+  (add-hook 'org-mode-hook
+            '(lambda ()
+               (delete '("\\.pdf\\'" . default) org-file-apps)
+               (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))))
   (add-to-list 'org-latex-classes
                '("bxjsarticle"
                  "\\documentclass{bxjsarticle}

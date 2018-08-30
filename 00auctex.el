@@ -12,11 +12,11 @@
 (setq japanese-LaTeX-command-default "LatexMk")
 (setq japanese-LaTeX-default-style "bxjsarticle")
 (setq preview-image-type 'dvipng)
-;; (setq TeX-source-correlate-method 'synctex)
-;; (setq TeX-source-correlate-start-server t)
-;; (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-;; (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
-;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(setq TeX-source-correlate-method 'synctex)
+(setq TeX-source-correlate-start-server t)
+(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 (setq preview-default-option-list
       (quote
        ("displaymath" "textmath" "footnotes")
