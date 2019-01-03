@@ -1,3 +1,4 @@
+;; M-x get-skk
 ;ddskk
 (global-set-key (kbd "C-x j") 'skk-mode)
 (with-eval-after-load "ddskk-autoloads"

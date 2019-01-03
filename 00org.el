@@ -1,4 +1,5 @@
 (with-eval-after-load "ox"
+  (require 'org-tempo)
   (require 'ox-latex)
   (setq org-highlight-latex-and-related '(latex script entities))
   (setq org-src-fontify-natively t)
@@ -111,7 +112,7 @@
    '(
      (R . t)
      (python . t)
-     (ein . t)
+     ;; (ein . t)
      (latex . t)
      (emacs-lisp . t)
      ))
