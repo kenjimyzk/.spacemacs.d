@@ -1,0 +1,13 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (ggplot)
+# key: myrfig2
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :exports results :results none :session *R*
+cairo_pdf("$0.pdf", width = 7, height = 5)
+library(ggplot2)
+theme_set(theme_gray(base_family = "IPAGothic"))
+qplot(speed, dist, data = cars, main = "散布図")
+dev.off()
+#+END_SRC
+

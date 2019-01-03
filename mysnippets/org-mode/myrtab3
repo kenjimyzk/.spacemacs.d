@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (stargazer)
+# key: myrtab3
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :exports results :results none :session *R*
+library(stargazer)
+stargazer($0, out = "$1.tex", header = FALSE, float = FALSE)
+#+END_SRC

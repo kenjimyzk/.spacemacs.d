@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (xtable)
+# key: myrtab1
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :exports results :results none :session *R*
+library(xtable)
+print(xtable($0),floating = FALSE, comment = FALSE, file = "$1.tex")
+#+END_SRC
+
+
+

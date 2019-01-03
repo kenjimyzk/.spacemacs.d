@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mylatexbib
+# key: mlbib
+# binding: direct-keybinding
+# --
+#+BEGIN_LaTeX
+\bibliographystyle{jecon}
+\bibliography{$0}
+#+END_LaTeX

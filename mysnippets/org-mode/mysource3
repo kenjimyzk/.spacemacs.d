@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (noweb)
+# key: mysr3
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :noweb yes :exports results :results output :session *R*
+<<$0>>
+#+END_SRC
+

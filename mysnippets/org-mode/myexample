@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: myexample
+# key: myex
+# binding: direct-keybinding
+# --
+#+BEGIN_QUOTE
+#+BEGIN_EXAMPLE
+$0
+#+END_EXAMPLE
+#+END_QUOTE

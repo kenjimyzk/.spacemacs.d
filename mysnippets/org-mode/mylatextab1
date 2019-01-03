@@ -1,0 +1,13 @@
+ -*- mode: snippet; require-final-newline: nil -*-
+# name: mylatextab1
+# key: mltab1
+# binding: direct-keybinding
+# --
+#+BEGIN_LaTeX
+\begin{table}\centering
+  \caption{$1}
+  \label{tab:$2}
+  \input{$0}
+\end{table}
+#+END_LaTeX
+

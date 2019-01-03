@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (exports results none)
+# key: mysr1
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :exports results :results none :session *R*
+$0
+#+END_SRC
+

@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mylatexfig2
+# key: mlfig2
+# binding: direct-keybinding
+# --
+#+BEGIN_LaTeX
+\begin{figure}[htb]\centering
+\input{$0}
+\caption{$1}
+\label{fig:$2}
+\end{figure}
+#+END_LaTeX

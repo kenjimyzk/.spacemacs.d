@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: myfigure2 (subplots)
+# key: myfig2
+# binding: direct-keybinding
+# --
+#+name: fig:$1
+#+caption: $2
+#+begin_figure
+\input{$3}
+#+end_figure
+$0

@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: rmd-block-tikz
+# key: rb5
+# binding: direct-keybinding
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+\`\`\`{r, echo=FALSE, dev="tikz"}
+#library(ggplot2)
+library(tikzDevice)
+options(tikzDefaultEngine='xetex')
+#options(tikzXelatexPackages = c(getOption('tikzXelatexPackages'),
+#                '\\usepackage[ipa]{zxjafont}'))
+$0
+\`\`\`

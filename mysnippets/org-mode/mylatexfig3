@@ -1,0 +1,15 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mylatexfig3
+# key: mlfig3
+# binding: direct-keybinding
+# --
+#+BEGIN_LaTeX
+\begin{figure}[htb]\centering
+\subfloat[$1]{
+\includegraphics[width=.45\linewidth]{$2.pdf}
+}
+\subfloat[$3]{
+\includegraphics[width=.45\linewidth]{$4.pdf}
+}\caption{$5}\label{fig:$6}
+\end{figure}
+#+END_LaTeX

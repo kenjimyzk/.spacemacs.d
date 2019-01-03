@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mytab2
+# key: mytab2
+# binding: direct-keybinding
+# --
+#+name: tab:$1
+#+caption: $2
+#+begin_table
+\centering
+\input{$0}
+#+end_table

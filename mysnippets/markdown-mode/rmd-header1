@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: rmd-header (article)
+# key: rh1
+# binding: direct-keybinding
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+---
+title: "$1"
+author: "$2"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    template: article-template.tex
+documentclass: bxjsarticle
+---

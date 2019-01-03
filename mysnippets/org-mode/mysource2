@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (noeval)
+# key: mysr2
+# binding: direct-keybinding
+# --
+#+name: $1
+#+BEGIN_SRC R :eval no :exports code :session *R*
+$0
+#+END_SRC
+

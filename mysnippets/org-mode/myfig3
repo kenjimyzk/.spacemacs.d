@@ -1,0 +1,18 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: myfigure3 (subplots)
+# key: myfig3
+# binding: direct-keybinding
+# --
+#+name: fig:$1
+#+caption: $2
+#+begin_figure
+#+LaTeX: \subfloat[$3]{
+#+attr_latex: :width .45\textwidth :float nil
+[[file:$4.pdf]]
+#+LaTeX: }
+#+LaTeX: \subfloat[$5]{
+#+attr_latex: :width .45\textwidth :float nil
+[[file:$6.pdf]]
+#+LaTeX: }
+#+end_figure
+$0

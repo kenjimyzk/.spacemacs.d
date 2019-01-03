@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: rmd-block-options
+# key: rb0
+# binding: direct-keybinding
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+\`\`\`{r, global_options, include=FALSE, echo=FALSE}
+library(knitr)
+opts_chunk$set(warning=FALSE, message=FALSE, fig.width=7, fig.height=5)
+#read_chunk('chunk.R')
+\`\`\`
+$0

@@ -1,0 +1,17 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mytab3
+# key: mytab3
+# binding: direct-keybinding
+# --
+#+name: tab:$1
+#+caption: $2
+#+begin_table
+\centering
+#+begin_threeparttable
+#+attr_latex: :center nil :align $3
+$0
+#+begin_tablenotes
+  \item[] \footnotesize Notes:
+#+end_tablenotes
+#+end_threeparttable
+#+end_table

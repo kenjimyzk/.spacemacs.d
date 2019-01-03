@@ -1,0 +1,13 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (tikz)
+# key: myrfig3
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :exports results :results none :session *R*
+library(tikzDevice)
+options(tikzDefaultEngine = 'xetex')
+tikz("$0.tex", width = 7, height = 5)
+curve(dnorm(x), xlim = c(-3,3), main = "$N(\\mu,\\sigma^2)$")
+dev.off()
+#+END_SRC
+

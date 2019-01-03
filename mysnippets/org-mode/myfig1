@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: myfigure1 (plot)
+# key: myfig1
+# binding: direct-keybinding
+# --
+#+name: fig:$1
+#+caption: $2
+#+attr_latex: :width 0.8\\textwidth
+[[file:$3.pdf]]
+$0

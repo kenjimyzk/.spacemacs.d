@@ -1,0 +1,20 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mylatextab2
+# key: mltab2
+# binding: direct-keybinding
+# --
+#+BEGIN_LaTeX
+\begin{table}\centering
+  \caption{$1}
+  \label{tab:$2}
+\begin{threeparttable}
+\input{$0}
+  \begin{tablenotes}\footnotesize
+  \item[] 注意
+    \item[1] one
+    \item[2] two
+    \item[] 出典: 
+  \end{tablenotes}
+\end{threeparttable}
+\end{table}
+#+END_LaTeX

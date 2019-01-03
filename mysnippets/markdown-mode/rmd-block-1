@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: rmd-block-1
+# key: rb1
+# binding: direct-keybinding
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+\`\`\`{r, echo=FALSE}
+$0      
+\`\`\`

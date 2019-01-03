@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (cairo_pdf)
+# key: myrfig1
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :exports results :results none :session *R*
+cairo_pdf("$0.pdf", width = 7, height = 5)
+par(family = "IPAGothic")
+curve(dnorm(x), xlim = c(-3,3), main = "正規分布")
+dev.off()
+#+END_SRC
+
+
+

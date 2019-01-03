@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: mysource (texreg)
+# key: myrtab2
+# binding: direct-keybinding
+# --
+#+BEGIN_SRC R :exports results :results none :session *R*
+library(texreg)
+texreg(list($0), file = "$1.tex", table = FALSE)
+#+END_SRC
+
